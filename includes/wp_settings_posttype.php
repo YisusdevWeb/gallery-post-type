@@ -1,7 +1,8 @@
 <?php
 
 // Funciones para la galería de imágenes entradas
-function obtener_imagenes_galeria($post_id) {
+function obtener_imagenes_galeria($post_id)
+{
     $galeria_imagenes = get_post_meta($post_id, '_gallery_images', true);
 
     if ($galeria_imagenes) {
@@ -22,7 +23,8 @@ function obtener_imagenes_galeria($post_id) {
     return array(); // Devolver un array vacío si no hay imágenes
 }
 
-function agregar_campo_galeria() {
+function agregar_campo_galeria()
+{
     add_meta_box(
         'galeria_imagenes',
         'Galería de Imágenes',
@@ -34,14 +36,15 @@ function agregar_campo_galeria() {
 }
 add_action('add_meta_boxes', 'agregar_campo_galeria');
 
-function mostrar_campo_galeria($post) {
+function mostrar_campo_galeria($post)
+{
     $galeria_imagenes = get_post_meta($post->ID, '_gallery_images', true);
-    ?>
+?>
     <div class="header-Galery">
         <label for="gallery_images" class="label_galeria">Selecciona las imágenes:</label>
-    <input type="text" id="gallery_images" name="gallery_images" class="url_galeria" value="<?php echo esc_attr($galeria_imagenes); ?>" />
+        <input type="text" id="gallery_images" name="gallery_images" class="url_galeria" value="<?php echo esc_attr($galeria_imagenes); ?>" />
         <input type="button" value="Seleccionar Imágenes" class="abrir_galeria button" />
-</div>
+    </div>
     <div id="galeria-preview" style="display: grid; grid-template-columns: repeat(8, 1fr); justify-items: center;">
         <?php
         if ($galeria_imagenes) {
@@ -55,15 +58,16 @@ function mostrar_campo_galeria($post) {
         }
         ?>
     </div>
-   
-    <?php
+
+<?php
 
     // Muestra el shortcode para ser copiado
     echo '<p>Para copiar este shortcode, selecciona el siguiente texto y cópialo:</p>';
     echo '<code>[galeria_shortcode]</code>';
 }
 
-function guardar_galeria_imagenes($post_id) {
+function guardar_galeria_imagenes($post_id)
+{
     if (isset($_POST['gallery_images'])) {
         update_post_meta($post_id, '_gallery_images', sanitize_text_field($_POST['gallery_images']));
     }

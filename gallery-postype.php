@@ -13,16 +13,16 @@
 
 
 
-if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+if (!defined('ABSPATH')) {
+  exit;
 }
 
-if( !defined('GPT_PLUGIN_URL') ) {
-  define( 'GPT_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+if (!defined('GPT_PLUGIN_URL')) {
+  define('GPT_PLUGIN_URL', plugin_dir_url(__FILE__));
 }
 
-if( !defined('GPT_NS') ) {
-  define( 'GPT_NS', 'Gallery_Post_type' );
+if (!defined('GPT_NS')) {
+  define('GPT_NS', 'Gallery_Post_type');
 }
 
 // Include settings 
